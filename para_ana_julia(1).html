@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Para Ana Julia ❤️</title>
+<style>
+  :root { --rosa:#ff5d91; --fondo:#fff0f5; --texto:#6c2342; }
+  * { box-sizing:border-box; }
+  body {
+    margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
+    padding:22px; font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    background:radial-gradient(circle at top,#ffe0ec,#fff7fb 60%,#ffd6e5);
+    color:var(--texto); text-align:center;
+  }
+  .card {
+    width:min(100%,520px); padding:30px 22px; border-radius:28px;
+    background:rgba(255,255,255,.88); box-shadow:0 14px 45px #d94d7b2b;
+    border:1px solid #ffffff;
+  }
+  .heart { font-size:76px; display:inline-block; animation:latido 1.15s infinite; filter:drop-shadow(0 6px 10px #ff9dbb66); }
+  h1 { margin:8px 0 10px; color:#d93670; font-size:clamp(2rem,8vw,3rem); }
+  .sub { font-size:1.08rem; line-height:1.7; }
+  .letter { background:#fff4f8; border-radius:18px; padding:18px; margin:20px 0; line-height:1.8; }
+  button {
+    border:0; border-radius:999px; background:linear-gradient(135deg,#ff5d91,#d93670);
+    color:white; font-size:1rem; font-weight:700; padding:14px 22px; margin:6px;
+    box-shadow:0 7px 18px #d9367033; cursor:pointer;
+  }
+  #mensaje { min-height:56px; margin-top:16px; font-weight:650; line-height:1.6; }
+  .small { font-size:.9rem; opacity:.8; margin-top:18px; }
+  @keyframes latido { 0%,100%{transform:scale(1)} 15%{transform:scale(1.13)} 30%{transform:scale(1)} 45%{transform:scale(1.08)} }
+  .floating { position:fixed; pointer-events:none; animation:subir 3.5s linear forwards; font-size:22px; }
+  @keyframes subir { from{transform:translateY(0);opacity:1} to{transform:translateY(-100vh) rotate(25deg);opacity:0} }
+</style>
+</head>
+<body>
+<main class="card">
+  <div class="heart" aria-label="corazón">💗</div>
+  <h1>Para mi Ana Julia</h1>
+  <p class="sub">Mi amor bonito, mi princesa y una de las razones más lindas de mi sonrisa. 🌷</p>
+  <section class="letter">
+    <strong>Mi amorcito:</strong><br>
+    Quiero que recuerdes siempre lo especial que eres para mí. Gracias por llenar mis días de alegría y por hacer que mi corazón tenga un lugar favorito: a tu lado. No necesito grandes cosas para demostrarte cuánto te amo; quiero cuidarte, hacerte sonreír y elegirte cada día. Eres mi presente, mi sueño bonito y ese abrazo al que siempre quiero volver.<br><br>
+    <strong>Te amo muchísimo, Ana Julia. ❤️</strong>
+  </section>
+  <p>Ahora toca un botoncito, mi amor. 😊</p>
+  <button onclick="mostrarMensaje()">Toca si me quieres 💌</button>
+  <button onclick="lluvia()">¡Una sorpresa! 💕</button>
+  <div id="mensaje" aria-live="polite"></div>
+  <p class="small">Hecho con todo mi cariño, solo para ti. 💖</p>
+</main>
+<script>
+const mensajes = [
+ "¡Yo sabía! Mi corazón te elige a ti todos los días. 💘",
+ "Si pudiera pedir un deseo, sería seguir compartiendo la vida contigo. 🌹",
+ "Eres mi persona favorita, mi paz y mi alegría. Te amo, Ana Julia. 🥰",
+ "Un abrazo enorme, un besito en la frente y todo mi amor para ti. 💋"
+];
+let i=0;
+function mostrarMensaje(){ document.getElementById('mensaje').textContent=mensajes[i%mensajes.length]; i++; lluvia(); }
+function lluvia(){
+  const emojis=['💗','💖','💕','💘','🌸'];
+  for(let j=0;j<18;j++){
+    const e=document.createElement('span'); e.className='floating';
+    e.textContent=emojis[Math.floor(Math.random()*emojis.length)];
+    e.style.left=Math.random()*100+'vw'; e.style.bottom='-30px';
+    e.style.animationDelay=(Math.random()*.9)+'s';
+    document.body.appendChild(e); setTimeout(()=>e.remove(),4500);
+  }
+}
+</script>
+</body>
+</html>
